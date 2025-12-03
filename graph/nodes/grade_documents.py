@@ -29,9 +29,11 @@ def grade_documents(state: GraphState) -> Dict[str, Any]:
         grade = score.binary_score
         if grade.lower() == "yes":
             print("---GRADE: DOCUMENT RELEVANT---")
+            web_search = False
             filtered_docs.append(d)
         else:
             print("---GRADE: DOCUMENT NOT RELEVANT---")
             web_search = True
             continue
+
     return {"documents": filtered_docs, "question": question, "web_search": web_search}
